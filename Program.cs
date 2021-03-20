@@ -28,43 +28,102 @@ namespace Lab11Var4
                 }
                 return Convert.ToInt32(n1);
             }
-            ClassLibraryLab10.ClassLibraryLab10.Factory Fac = new ClassLibraryLab10.ClassLibraryLab10.Factory("Фабрика", 350, 20, "Лондон");
-            ClassLibraryLab10.ClassLibraryLab10.Insurance_Company Ins = new ClassLibraryLab10.ClassLibraryLab10.Insurance_Company("Страховая компания", 270, 1990, 96);
-            ClassLibraryLab10.ClassLibraryLab10.Library Lib = new ClassLibraryLab10.ClassLibraryLab10.Library("Библиотека", 50, 8, 700);
-            ClassLibraryLab10.ClassLibraryLab10.Shipbuilding_company Ship = new ClassLibraryLab10.ClassLibraryLab10.Shipbuilding_company("Кораблестроительная компания", 200, 900000, 45);
-            ClassLibraryLab10.ClassLibraryLab10.Organization Org = new ClassLibraryLab10.ClassLibraryLab10.Organization("Организация", 290);
-            MyCollections<IInit, ClassLibraryLab10.ClassLibraryLab10.Factory, ClassLibraryLab10.ClassLibraryLab10.Insurance_Company, ClassLibraryLab10.ClassLibraryLab10.Library, ClassLibraryLab10.ClassLibraryLab10.Shipbuilding_company, ClassLibraryLab10.ClassLibraryLab10.Organization> New_Coll = new MyCollections<IInit, ClassLibraryLab10.ClassLibraryLab10.Factory, ClassLibraryLab10.ClassLibraryLab10.Insurance_Company, ClassLibraryLab10.ClassLibraryLab10.Library, ClassLibraryLab10.ClassLibraryLab10.Shipbuilding_company, ClassLibraryLab10.ClassLibraryLab10.Organization>(Fac, Ins, Lib, Ship, Org);
-            Console.ReadKey();
+            Factory Fac = new Factory("Фабрика", 350, 20, "Лондон");
+            Insurance_Company Ins = new Insurance_Company("Страховая компания", 270, 1990, 96);
+            Library Lib = new Library("Библиотека", 50, 8, 700);
+            Shipbuilding_company Ship = new Shipbuilding_company("Кораблестроительная компания", 200, 900000, 45);
+            Organization Org = new Organization("Организация", 290);
             Console.WriteLine("Выберите следующее действие:\n1-добавление элемента в список\n2-удаление элемента из списка");
             int Select = Check(Console.ReadLine());
-
-        }
-    }
-    public class MyCollections<T, T1,T2,T3,T4,T5> where T:class
-    {
-        
-        List<object> list;
-        public MyCollections(T1 x, T2 x1, T3 x2, T4 x3, T5 x4)
-        {
-            //size = s;
-            //array = new Object[size];
-            //array[0] = (Factory)x;
-            //array[1] = x1;
-            //array[2] = x2;
-            //array[3] = x3;
-            //array[4] = x4;
-            list = new List<Object>();
-            list.Add(x);
-            list.Add(x1);
-            list.Add(x2);
-            list.Add(x3);
-            list.Add(x4);
+            while ((Select>2) || (Select<1))
+            {
+                Console.WriteLine("Введите 1 или 2");
+                Select = Check(Console.ReadLine());
+            }
+            List<Organization> list = new List<Organization>();
+            list.Add(Fac);
+            list.Add(Ins);
+            list.Add(Lib);
+            list.Add(Ship);
+            list.Add(Org);
+            Console.WriteLine("Исходная коллекция");
+            Show();
+            switch (Select)
+            {
+                case 1:
+                    Console.WriteLine("Выберите класс, который хотите добавить в коллекцию\n1-Organization\n2-Insurance_Company\n3-Library\n4-Factory\n5-Shipbuilding_company");
+                    int Select1 = Check(Console.ReadLine());
+                    while (Select1 > 5 || Select1 < 1)
+                    {
+                        Console.WriteLine("Введите цифру от 1 до 5");
+                        Select1 = Check(Console.ReadLine());
+                    }
+                    switch (Select1)
+                    {
+                        case 1:
+                            Organization New_Org = new Organization();
+                            New_Org = (Organization)New_Org.Init();
+                            list.Add(New_Org);
+                            break;
+                        case 2:
+                            Insurance_Company New_Ins = new Insurance_Company();
+                            New_Ins = (Insurance_Company)New_Ins.Init();
+                            list.Add(New_Ins);
+                            break;
+                        case 3:
+                            Library New_Lib = new Library();
+                            New_Lib = (Library)New_Lib.Init();
+                            list.Add(New_Lib);
+                            break;
+                        case 4:
+                            Factory New_Fac = new Factory();
+                            New_Fac = (Factory)New_Fac.Init();
+                            list.Add(New_Fac);
+                            break;
+                        case 5:
+                            Shipbuilding_company New_Ship = new Shipbuilding_company();
+                            New_Ship = (Shipbuilding_company)New_Ship.Init();
+                            list.Add(New_Ship);
+                            break;
+                    }
+                    Show();
+                    break;
+                case 2:
+                    Console.WriteLine("Выберите элемент, который хотите удалить из коллекции\n1-Factory\n2-Insurance_Company\n3-Library\n4-Shipbuilding_company\n5-Organization");
+                    int Select2 = Check(Console.ReadLine());
+                    while (Select2 > 5 || Select2 < 1)
+                    {
+                        Console.WriteLine("Введите цифру от 1 до 5");
+                        Select2 = Check(Console.ReadLine());
+                        switch (Select2)
+                        {
+                            case 1:
+                                list.RemoveAt(1);
+                                break;
+                            case 2:
+                                list.RemoveAt(2);
+                                break;
+                            case 3:
+                                list.RemoveAt(3);
+                                break;
+                            case 4:
+                                list.RemoveAt(4);
+                                break;
+                            case 5:
+                                list.RemoveAt(5);
+                                break;
+                        }
+                        Show();
+                    }
+                    break;
             
+            }
+            Console.ReadKey();
+            void Show()
+            {
+                foreach (var v in list)
+                    v.Show();
+            }
         }
-        public void Show()
-        {
-            foreach (var v in list)
-                Console.WriteLine();
-        }    
     }
 }
