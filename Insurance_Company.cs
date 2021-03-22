@@ -13,7 +13,10 @@ namespace Lab11Var4
         static int rating;
         static int year_of_foundation;
         public Insurance_Company() : base()
-        { }
+        {
+            year_of_foundation = 0;
+            rating = 0;
+        }
         public Insurance_Company(string l, int k, int year_of_found, int rating1) : base(l, k)
         {
             Year_of_Foundation = year_of_found;
@@ -48,7 +51,7 @@ namespace Lab11Var4
         public override void Show()
         {
             base.Show();
-            Console.WriteLine($"Фирма имеет рейтинг {rating}");
+            Console.WriteLine($"Фирма имеет рейтинг {rating} и организована в {year_of_foundation} году");
         }
         public void ShowStage(int po)
         {
@@ -72,7 +75,7 @@ namespace Lab11Var4
         public override object Init()
         {
             Organization o = (Organization)base.Init();
-            Insurance_Company i = new Insurance_Company(o.Name, o.Number_of_employees, rnd.Next(1800, 2022), rnd.Next(0, 101));
+            Insurance_Company i = new Insurance_Company(o.Name, o.Number_of_employees, Year_of_Foundation = rnd.Next(1800, 2022), Rating = rnd.Next(0, 101));
             return i;
         }
         public override object Clone()

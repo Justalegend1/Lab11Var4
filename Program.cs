@@ -73,6 +73,7 @@ namespace Lab11Var4
                         case 3:
                             Library New_Lib = new Library();
                             New_Lib = (Library)New_Lib.Init();
+                            New_Lib.Working_Hours = 8;
                             list.Add(New_Lib);
                             break;
                         case 4:
@@ -95,26 +96,26 @@ namespace Lab11Var4
                     {
                         Console.WriteLine("Введите цифру от 1 до 5");
                         Select2 = Check(Console.ReadLine());
+                    }
                         switch (Select2)
                         {
                             case 1:
+                                list.RemoveAt(0);
+                            break;
+                            case 2:
                                 list.RemoveAt(1);
                                 break;
-                            case 2:
+                            case 3:
                                 list.RemoveAt(2);
                                 break;
-                            case 3:
+                            case 4:
                                 list.RemoveAt(3);
                                 break;
-                            case 4:
-                                list.RemoveAt(4);
-                                break;
                             case 5:
-                                list.RemoveAt(5);
+                                list.RemoveAt(4);
                                 break;
                         }
                         Show();
-                    }
                     break;
             
             }
@@ -124,6 +125,215 @@ namespace Lab11Var4
                 foreach (var v in list)
                     v.Show();
             }
+            Console.Clear();
+            Console.WriteLine("Выберите запрос, который хотите осуществить\n1-Количество элементов определенного типа\n2-Печать элементов определенного типа\n3-Индексы элементов определенного типа");
+            int Select_3_Subt = Check(Console.ReadLine());
+            while ((Select_3_Subt < 1) || (Select_3_Subt > 3))
+            {
+                Console.WriteLine("Введите цифру от 1 до 3");
+                Select_3_Subt = Check(Console.ReadLine());
+            }
+            switch (Select_3_Subt)
+            {
+                case 1:
+                    Console.WriteLine("Какой тип элементов вы хотите посчитать?\n1-Factory\n2-Insurance_Company\n3-Library\n4-Shipbuilding_company\n5-Organization");
+                    int Select_3_Subt1 = Check(Console.ReadLine());
+                    while (Select_3_Subt1 < 1 || Select_3_Subt1 > 5)
+                    {
+                        Console.WriteLine("Введите цифру от 1 до 5");
+                        Select_3_Subt1 = Check(Console.ReadLine());
+                    }
+                    switch (Select_3_Subt1)
+                    {
+                        case 1:
+                            int count = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Fac.GetType())
+                                    count++;
+                            Console.WriteLine($"Количество элементов данного типа: {count}");
+                            break;
+                        case 2:
+                            int count1 = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Ins.GetType())
+                                    count1++;
+                            Console.WriteLine($"Количество элементов данного типа: {count1}");
+                            break;
+                        case 3:
+                            int count2 = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Lib.GetType())
+                                    count2++;
+                            Console.WriteLine($"Количество элементов данного типа: {count2}");
+                            break;
+                        case 4:
+                            int count3 = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Ship.GetType())
+                                    count3++;
+                            Console.WriteLine($"Количество элементов данного типа: {count3}");
+                            break;
+                        case 5:
+                            int count4 = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Org.GetType())
+                                    count4++;
+                            Console.WriteLine($"Количество элементов данного типа: {count4}");
+                            break;
+                    }
+                    Console.ReadKey();
+                    break;
+                case 2:
+                    Console.WriteLine("Какой тип элементов вы хотите вывести?\n1-Factory\n2-Insurance_Company\n3-Library\n4-Shipbuilding_company\n5-Organization");
+                    int Select_3_Subt2 = Check(Console.ReadLine());
+                    while (Select_3_Subt2 < 1 || Select_3_Subt2 > 5)
+                    {
+                        Console.WriteLine("Введите цифру от 1 до 5");
+                        Select_3_Subt1 = Check(Console.ReadLine());
+                    }
+                    switch (Select_3_Subt2)
+                    {
+                        case 1:
+                            int Count = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Fac.GetType())
+                                {
+                                    list[t].Show();
+                                    Count++;
+                                }
+                            if (Count == 0)
+                                Console.WriteLine("Нет элементов такого типа");
+                            break;
+                        case 2:
+                            int Count1 = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Ins.GetType())
+                                {
+                                    list[t].Show();
+                                    Count1++;
+                                }
+                            if (Count1 == 0)
+                                Console.WriteLine("Нет элементов такого типа");
+                            break;
+                        case 3:
+                            int Count2 = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Lib.GetType())
+                                {
+                                    list[t].Show();
+                                    Count2++;
+                                }
+                            if (Count2 == 0)
+                                Console.WriteLine("Нет элементов такого типа");
+                            break;
+                        case 4:
+                            int Count3 = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Ship.GetType())
+                                {
+                                    list[t].Show();
+                                    Count3++;
+                                }
+                            if (Count3 == 0)
+                                Console.WriteLine("Нет элементов такого типа");
+                            break;
+                        case 5:
+                            int Count4 = 0;
+                                for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Org.GetType())
+                                {
+                                    list[t].Show();
+                                    Count4++;
+                                }
+                            if (Count4 == 0)
+                                Console.WriteLine("Нет элементов такого типа");
+                            break;
+                    }
+                    Console.ReadKey();
+                    break;
+                case 3:
+                    Console.WriteLine("Индекс какого типа вы хотите вывести?\n1-Factory\n2-Insurance_Company\n3-Library\n4-Shipbuilding_company\n5-Organization");
+                    int Select_3_Subt3 = Check(Console.ReadLine());
+                    while (Select_3_Subt3 < 1 || Select_3_Subt3 > 5)
+                    {
+                        Console.WriteLine("Введите цифру от 1 до 5");
+                        Select_3_Subt1 = Check(Console.ReadLine());
+                    }
+                    
+                    switch (Select_3_Subt3)
+                    {
+                        case 1:
+                            int Counter = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Fac.GetType())
+                                {
+                                    Console.WriteLine($"Индекс элемента {t}");
+                                    Counter++;
+                                }
+                            if (Counter == 0)
+                                Console.WriteLine("Нет элементов такого типа");
+                            break;
+                        case 2:
+                            int Counter1 = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Ins.GetType())
+                                {
+                                    Console.WriteLine($"Индекс элемента {t}");
+                                    Counter1++;
+                                }
+                            if (Counter1 == 0)
+                                Console.WriteLine("Нет элементов такого типа");
+                            break;
+                        case 3:
+                            int Counter2 = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Lib.GetType())
+                                {
+                                    Console.WriteLine($"Индекс элемента {t}");
+                                    Counter2++;
+                                }
+                            if (Counter2 == 0)
+                                Console.WriteLine("Нет элементов такого типа");
+                            break;
+                        case 4:
+                            int Counter3 = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Ship.GetType())
+                                {
+                                    Console.WriteLine($"Индекс элемента {t}");
+                                    Counter3++;
+                                }
+                            if (Counter3 == 0)
+                                Console.WriteLine("Нет элементов такого типа");
+                            break;
+                        case 5:
+                            int Counter4 = 0;
+                            for (int t = 0; t < list.Count; t++)
+                                if (list[t].GetType() == Org.GetType())
+                                {
+                                    Console.WriteLine($"Индекс элемента {t}");
+                                    Counter4++;
+                                }
+                            if (Counter4 == 0)
+                                Console.WriteLine("Нет элементов такого типа");
+                            break;
+                    }
+                    Console.ReadKey();
+                    break;
+            }
+            Console.Clear();
+            Console.WriteLine("Перебор Элементов коллекции");
+            foreach (var k in list)
+                k.Show();
+            Console.Clear();
+            Console.WriteLine("Клонируем коллекцию");
+            List<Organization> Clone_List = new List<Organization>(list.Count);
+            foreach (Organization li in list)
+                Clone_List.Add((Organization)li.Clone());
+            foreach (var l in Clone_List)
+                l.Show();
+            Console.ReadKey();
+            
         }
     }
 }

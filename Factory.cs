@@ -10,7 +10,10 @@ namespace Lab11Var4
         private string city_of_object;
 
         public Factory() : base()
-        { }
+        {
+            AgeObj = 0;
+            city_of_object = default;
+        }
 
         public Factory(string name, int number, int AgeObj1, string city_of_obj) : base(name, number)
         {
@@ -67,13 +70,13 @@ namespace Lab11Var4
 
         }
 
-        private static Random rnd = new Random();
+        static Random rnd = new Random();
 
         public override object Init()
         {
             Organization o = (Organization)base.Init();
             string[] City_Object = new string[7] { "Пермь", "Москва", "Лондон", "Париж", "Венеция", "Прага", "Амстердам" };
-            Factory f = new Factory(o.Name, o.Number_of_employees, rnd.Next(1, 50), City_Object[rnd.Next(0, City_Object.Length - 1)]);
+            Factory f = new Factory(o.Name, o.Number_of_employees, AgeObJ = rnd.Next(1, 50), City_of_Object = City_Object[rnd.Next(0, City_Object.Length - 1)]);
             return f;
         }
 

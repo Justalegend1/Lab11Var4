@@ -19,7 +19,10 @@ namespace Lab11Var4
 
         }
         public Shipbuilding_company() : base()
-        { }
+        {
+            number_of_ships = 0;
+            average_income = default;
+        }
         public double Average_income
         {
             get { return average_income; }
@@ -84,7 +87,7 @@ namespace Lab11Var4
         public override object Init()
         {
             Organization o = (Organization)base.Init();
-            Shipbuilding_company s = new Shipbuilding_company(o.Name, o.Number_of_employees, rnd.NextDouble() * 1000000, rnd.Next(0, 101));
+            Shipbuilding_company s = new Shipbuilding_company(Name = o.Name, Number_of_employees = o.Number_of_employees, Average_income = rnd.NextDouble() * 1000000, Number_of_Ships = rnd.Next(0, 101));
             return s;
         }
         public override object Clone()

@@ -13,7 +13,10 @@ namespace Lab11Var4
         string[] employee = new string[7] { "Улыбкина", "Кардашьян", "Барбариков", "Бобров", "Крылов", "Чесноков", "Паров" };
         int[] stage = new int[7] { 3, 15, 11, 4, 4, 2, 22 };
         public Library() : base()
-        { }
+        {
+            number_of_books = 0;
+            working_hours = 0;
+        }
         public Library(string name, int number, int work, int number1) : base(name, number)
         {
             Working_Hours = work;
@@ -68,11 +71,12 @@ namespace Lab11Var4
             if (count == 0)
                 Console.WriteLine("Такого работника нет");
         }
-        static Random rnd = new Random();
         public override object Init()
         {
+            Random rnd = new Random();
             Organization o = (Organization)base.Init();
-            Library l = new Library(o.Name, o.Number_of_employees, rnd.Next(1, 10), rnd.Next(50, 1001));
+            Library l = new Library(Name = o.Name, Number_of_employees = o.Number_of_employees, Working_Hours =  rnd.Next(1, 10), Number_of_Books = rnd.Next(50, 1001));
+            //Console.WriteLine(ReferenceEquals(this, l));
             return l;
         }
         public override object Clone()
