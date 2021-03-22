@@ -47,7 +47,7 @@ namespace Lab11Var4
         {
             Console.WriteLine($"Кол-во сотрудников: {number_of_employees}, название организации: {name} ");
         }
-        static Random rnd = new Random();
+        protected static Random rnd = new Random();
         public virtual object Init()
         {
             string[] name1 = new string[7] {"Техкомфорт", "Газпром", "Ваше право", "Рука Фемиды", "Кодекс чести", "Гармония здоровья", "Apple" };

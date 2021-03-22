@@ -71,7 +71,7 @@ namespace Lab11Var4
             if (count == 0)
                 Console.WriteLine("Такого работника нет");
         }
-        static Random rnd = new Random();
+        //static Random rnd = new Random();
         public override object Init()
         {
             Organization o = (Organization)base.Init();

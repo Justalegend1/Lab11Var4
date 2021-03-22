@@ -70,7 +70,7 @@ namespace Lab11Var4
 
         }
 
-        static Random rnd = new Random();
+        //static Random rnd = new Random();
 
         public override object Init()
         {

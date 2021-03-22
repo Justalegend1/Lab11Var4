@@ -73,7 +73,7 @@ namespace Lab11Var4
         }
         public override object Init()
         {
-            Random rnd = new Random();
+            //Random rnd = new Random();
             Organization o = (Organization)base.Init();
             Library l = new Library(Name = o.Name, Number_of_employees = o.Number_of_employees, Working_Hours =  rnd.Next(1, 10), Number_of_Books = rnd.Next(50, 1001));
             //Console.WriteLine(ReferenceEquals(this, l));

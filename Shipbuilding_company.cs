@@ -57,13 +57,6 @@ namespace Lab11Var4
             else
                 Console.WriteLine($"Средний доход фирмы: {average_income}, и на счету фирмы уже {number_of_ships} созданных корабля");
         }
-        //public void Show()
-        //{
-        //    if (number_of_ships >= 5)
-        //        Console.WriteLine($"Средний доход фирмы: {average_income}, и на счету фирмы уже {number_of_ships} созданных кораблей");
-        //    else
-        //        Console.WriteLine($"Средний доход фирмы: {average_income}, и на счету фирмы уже {number_of_ships} созданных корабля");
-        //}
         public void ShowStage(int po)
         {
             int count = 0;
@@ -83,7 +76,7 @@ namespace Lab11Var4
             if (count == 0)
                 Console.WriteLine("Такого работника нет");
         }
-        static Random rnd = new Random();
+        //static Random rnd = new Random();
         public override object Init()
         {
             Organization o = (Organization)base.Init();
