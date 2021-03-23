@@ -2,7 +2,7 @@
 
 namespace Lab11Var4
 {
-    public class Factory : Organization
+    public class Factory : Organization, ICloneable
     {
         private string[] employee = new string[7] { "Кузнецов", "Иванов", "Петров", "Ветров", "Подбельский", "Блок", "Понасенков" };
         private int[] stage = new int[7] { 3, 4, 5, 6, 5, 9, 2 };

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab11Var4
 {
-    public class Shipbuilding_company : Organization
+    public class Shipbuilding_company : Organization, ICloneable
     {
         int number_of_ships;
         double average_income;

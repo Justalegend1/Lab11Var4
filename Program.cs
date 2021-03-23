@@ -40,12 +40,12 @@ namespace Lab11Var4
                 Console.WriteLine("Введите 1 или 2");
                 Select = Check(Console.ReadLine());
             }
-            SortedList<int,Organization> list = new SortedList<int, Organization>();
-            list.Add(1,Fac);
-            list.Add(2,Ins);
-            list.Add(3,Lib);
-            list.Add(4,Ship);
-            list.Add(5,Org);
+            SortedList<string,Organization> list = new SortedList<string, Organization>();
+            list.Add("Factory",Fac);
+            list.Add("Insurance_Company",Ins);
+            list.Add("Library",Lib);
+            list.Add("Shipbuilding_Company",Ship);
+            list.Add("Organization",Org);
             Console.WriteLine("Исходная коллекция");
             Show();
             switch (Select)
@@ -63,28 +63,28 @@ namespace Lab11Var4
                         case 1:
                             Organization New_Org = new Organization();
                             New_Org = (Organization)New_Org.Init();
-                            list.Add(6,New_Org);
+                            list.Add("Organization1",New_Org);
                             break;
                         case 2:
                             Insurance_Company New_Ins = new Insurance_Company();
                             New_Ins = (Insurance_Company)New_Ins.Init();
-                            list.Add(6,New_Ins);
+                            list.Add("Insurance_Company1",New_Ins);
                             break;
                         case 3:
                             Library New_Lib = new Library();
                             New_Lib = (Library)New_Lib.Init();
                             New_Lib.Working_Hours = 8;
-                            list.Add(6,New_Lib);
+                            list.Add("Library1",New_Lib);
                             break;
                         case 4:
                             Factory New_Fac = new Factory();
                             New_Fac = (Factory)New_Fac.Init();
-                            list.Add(6,New_Fac);
+                            list.Add("Factory1",New_Fac);
                             break;
                         case 5:
                             Shipbuilding_company New_Ship = new Shipbuilding_company();
                             New_Ship = (Shipbuilding_company)New_Ship.Init();
-                            list.Add(6,New_Ship);
+                            list.Add("Shipbuilding_company", New_Ship);
                             break;
                     }
                     Show();
@@ -122,12 +122,12 @@ namespace Lab11Var4
             Console.ReadKey();
             void Show()
             {
-                ICollection<int> keys = list.Keys;
+                ICollection<string> keys = list.Keys;
                 foreach (var v in keys)
                     list[v].Show();
             }
             Console.Clear();
-            Console.WriteLine("Выберите запрос, который хотите осуществить\n1-Количество элементов определенного типа\n2-Печать элементов определенного типа\n3-Индексы элементов определенного типа");
+            Console.WriteLine("Выберите запрос, который хотите осуществить\n1-Количество элементов определенного типа\n2-Печать элементов определенного типа\n3-Ключи элементов определенного типа");
             int Select_3_Subt = Check(Console.ReadLine());
             while ((Select_3_Subt < 1) || (Select_3_Subt > 3))
             {
@@ -144,7 +144,7 @@ namespace Lab11Var4
                         Console.WriteLine("Введите цифру от 1 до 5");
                         Select_3_Subt1 = Check(Console.ReadLine());
                     }
-                    ICollection<int> Keys1 = list.Keys;
+                    ICollection<string> Keys1 = list.Keys;
                     switch (Select_3_Subt1)
                     {
                         case 1:
@@ -193,7 +193,7 @@ namespace Lab11Var4
                         Console.WriteLine("Введите цифру от 1 до 5");
                         Select_3_Subt1 = Check(Console.ReadLine());
                     }
-                    ICollection <int> Keys = list.Keys;
+                    ICollection <string> Keys = list.Keys;
                     switch (Select_3_Subt2)
                     {
                         case 1:
@@ -260,9 +260,9 @@ namespace Lab11Var4
                     while (Select_3_Subt3 < 1 || Select_3_Subt3 > 5)
                     {
                         Console.WriteLine("Введите цифру от 1 до 5");
-                        Select_3_Subt1 = Check(Console.ReadLine());
+                        Select_3_Subt3 = Check(Console.ReadLine());
                     }
-                    ICollection<int> Keys2 = list.Keys;
+                    ICollection<string> Keys2 = list.Keys;
                     switch (Select_3_Subt3)
                     {
                         case 1:
@@ -270,7 +270,7 @@ namespace Lab11Var4
                             foreach (var t1 in Keys2)
                                 if (list[t1].GetType() == Fac.GetType())
                                 {
-                                    Console.WriteLine($"Индекс элемента {t1}");
+                                    Console.WriteLine($"Ключ элемента {t1}");
                                     Counter++;
                                 }
                             if (Counter == 0)
@@ -281,7 +281,7 @@ namespace Lab11Var4
                             foreach (var t1 in Keys2)
                                 if (list[t1].GetType() == Ins.GetType())
                                 {
-                                    Console.WriteLine($"Индекс элемента {t1}");
+                                    Console.WriteLine($"Ключ элемента {t1}");
                                     Counter1++;
                                 }
                             if (Counter1 == 0)
@@ -292,7 +292,7 @@ namespace Lab11Var4
                             foreach (var t1 in Keys2)
                                 if (list[t1].GetType() == Lib.GetType())
                                 {
-                                    Console.WriteLine($"Индекс элемента {t1}");
+                                    Console.WriteLine($"Ключ элемента {t1}");
                                     Counter2++;
                                 }
                             if (Counter2 == 0)
@@ -303,7 +303,7 @@ namespace Lab11Var4
                             foreach (var t1 in Keys2)
                                 if (list[t1].GetType() == Ship.GetType())
                                 {
-                                    Console.WriteLine($"Индекс элемента {t1}");
+                                    Console.WriteLine($"Ключ элемента {t1}");
                                     Counter3++;
                                 }
                             if (Counter3 == 0)
@@ -314,7 +314,7 @@ namespace Lab11Var4
                             foreach (var t1 in Keys2)
                                 if (list[t1].GetType() == Org.GetType())
                                 {
-                                    Console.WriteLine($"Индекс элемента {t1}");
+                                    Console.WriteLine($"Ключ элемента {t1}");
                                     Counter4++;
                                 }
                             if (Counter4 == 0)
@@ -326,18 +326,94 @@ namespace Lab11Var4
             }
             Console.Clear();
             Console.WriteLine("Перебор Элементов коллекции");
-            ICollection <int> keys1 = list.Keys;
+            ICollection <string> keys1 = list.Keys;
             foreach (var k in keys1)
                 list[k].Show();
-            Console.Clear();
-            Console.WriteLine("Клонируем коллекцию");
-            List<Organization> Clone_List = new List<Organization>();
-            
-            foreach (var l in Clone_List)
-                l.Show();
+            ////Console.Clear();
+            ////Console.WriteLine("Клонируем коллекцию");
+            SortedList<int,Organization> Clone_List = new SortedList<int, Organization>();
+            ////for (int lo = 0; lo < list.Count; lo++)
+            ////    Clone_List.Add(lo, (Organization)list[lo].Clone());
+            ////foreach (var vi in keys1)
+            ////    Clone_List[vi].Show();
+            void PrintKeysAndValues( SortedList<string, Organization> myList )  
+            {
+            Console.WriteLine("\t-KEY-\t-VALUE-");
+            //for (int i = 0; i < myList.Count; i++)
+            //{
+            //    Console.WriteLine("\t{0}:\t{1}", myList.GetKey(i), myList.GetByIndex(i));
+            //}
+            //Console.WriteLine();
+            //Console.ReadKey();
+            }
+            Organization[] Arr_For_Coll = new Organization[list.Count];
+            Console.WriteLine("Какой элемент вы хоитите найти?\n1-Factory\n2-Insurance_Company\n3-Library\n4-Shipbuilding_company\n5-Organization");
+            int Select_3_Subt4 = Check(Console.ReadLine());
+            while (Select_3_Subt4 < 1 || Select_3_Subt4 > 5)
+            {
+                Console.WriteLine("Введите цифру от 1 до 5");
+                Select_3_Subt4 = Check(Console.ReadLine());
+            }
+            ICollection<string> Keys3 = list.Keys;
+            switch (Select_3_Subt4)
+            {
+                case 1:
+                    int Counter = 0;
+                    foreach (var t1 in Keys3)
+                        if (list[t1].GetType() == Fac.GetType())
+                        {
+                            Console.WriteLine($"Ключ элемента {t1}");
+                            Counter++;
+                        }
+                    if (Counter == 0)
+                        Console.WriteLine("Нет элементов такого типа");
+                    break;
+                case 2:
+                    int Counter1 = 0;
+                    foreach (var t1 in Keys3)
+                        if (list[t1].GetType() == Ins.GetType())
+                        {
+                            Console.WriteLine($"Ключ элемента {t1}");
+                            Counter1++;
+                        }
+                    if (Counter1 == 0)
+                        Console.WriteLine("Нет элементов такого типа");
+                    break;
+                case 3:
+                    int Counter2 = 0;
+                    foreach (var t1 in Keys3)
+                        if (list[t1].GetType() == Lib.GetType())
+                        {
+                            Console.WriteLine($"Ключ элемента {t1}");
+                            Counter2++;
+                        }
+                    if (Counter2 == 0)
+                        Console.WriteLine("Нет элементов такого типа");
+                    break;
+                case 4:
+                    int Counter3 = 0;
+                    foreach (var t1 in Keys3)
+                        if (list[t1].GetType() == Ship.GetType())
+                        {
+                            Console.WriteLine($"Ключ элемента {t1}");
+                            Counter3++;
+                        }
+                    if (Counter3 == 0)
+                        Console.WriteLine("Нет элементов такого типа");
+                    break;
+                case 5:
+                    int Counter4 = 0;
+                    foreach (var t1 in Keys3)
+                        if (list[t1].GetType() == Org.GetType())
+                        {
+                            Console.WriteLine($"Ключ элемента {t1}");
+                            Counter4++;
+                        }
+                    if (Counter4 == 0)
+                        Console.WriteLine("Нет элементов такого типа");
+                    break;
+            }
             Console.ReadKey();
-            
-            
         }
     }
 }

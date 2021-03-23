@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab11Var4
 {
-    public class Insurance_Company : Organization
+    public class Insurance_Company : Organization, ICloneable 
     {
         string[] employee = new string[7] { "Петров", "Николаев", "Борисов", "Никитин", "Вяткин", "Уткин", "Отвальный" };
         int[] stage = new int[7] { 5, 3, 9, 4, 17, 9, 13 };

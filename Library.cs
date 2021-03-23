@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab11Var4
 {
-    public class Library : Organization
+    public class Library : Organization, ICloneable
     {
         static int working_hours;
         static int number_of_books;
