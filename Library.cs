@@ -8,8 +8,8 @@ namespace Lab11Var4
 {
     public class Library : Organization, ICloneable
     {
-        static int working_hours;
-        static int number_of_books;
+        int working_hours;
+        int number_of_books;
         string[] employee = new string[7] { "Улыбкина", "Кардашьян", "Барбариков", "Бобров", "Крылов", "Чесноков", "Паров" };
         int[] stage = new int[7] { 3, 15, 11, 4, 4, 2, 22 };
         public Library() : base()
@@ -48,10 +48,15 @@ namespace Lab11Var4
                 }
             }
         }
+        //public override void Show()
+        //{
+        //    base.Show();
+        //    Console.WriteLine($"Библиотека работает {working_hours} часов и имеет {number_of_books} книг"); ;
+        //}
         public override void Show()
         {
-            base.Show();
-            Console.WriteLine($"Библиотека работает {working_hours} часов и имеет {number_of_books} книг"); ;
+            //Console.WriteLine($"Кол-во сотрудников: {number_of_employees}, название организации: {name} ");
+            Console.WriteLine(this.ToString());
         }
         public void ShowStage(int po)
         {
@@ -93,6 +98,10 @@ namespace Lab11Var4
                 return base.Equals(obj) && this.Working_Hours == ((Library)obj).Working_Hours && this.Number_of_Books == ((Library)obj).Number_of_Books;
             else
                 return false;
+        }
+        public override string ToString()
+        {
+            return base.ToString() + " " + "Часы работы: " + this.working_hours.ToString() + "," + "Количество книг: " + this.number_of_books.ToString();
         }
     }
 }

@@ -44,12 +44,16 @@ namespace Lab11Var4
             }
         }
 
+        //public override void Show()
+        //{
+        //    base.Show();
+        //    Console.WriteLine($"Возраст объекта: {AgeObj}, Город расположения объекта: {city_of_object}");
+        //}
         public override void Show()
         {
-            base.Show();
-            Console.WriteLine($"Возраст объекта: {AgeObj}, Город расположения объекта: {city_of_object}");
+            //Console.WriteLine($"Кол-во сотрудников: {number_of_employees}, название организации: {name} ");
+            Console.WriteLine(this.ToString());
         }
-
         public void ShowStage(int po)
         {
             int count = 0;
@@ -96,6 +100,16 @@ namespace Lab11Var4
             else
                 return false;
 
+        }
+        public override string ToString()
+        {
+            return (base.ToString() + " " + "Возраст объекта: " + this.AgeObj.ToString() + "," + "Город расположения объекта: " + this.city_of_object);
+        }
+        public Organization BaseOrganization
+        {
+            get {
+                string[] name1 = new string[7] { "Техкомфорт", "Газпром", "Ваше право", "Рука Фемиды", "Кодекс чести", "Гармония здоровья", "Apple" };
+                return new Organization(name1[rnd.Next(0, name1.Length - 1)], rnd.Next(1, 501));}
         }
     }
 }

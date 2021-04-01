@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 
 namespace Lab11Var4
@@ -29,9 +30,9 @@ namespace Lab11Var4
                 return Convert.ToInt32(n1);
             }
             #region task1
-            Console.WriteLine("Выберите номер задания\n1-Первое задание\n2-Второе задание");
+            Console.WriteLine("Выберите номер задания\n1-Первое задание\n2-Второе задание\n3-Третье задание");
             int Task = Check(Console.ReadLine());
-            while ((Task < 1) || (Task > 2))
+            while ((Task < 1) || (Task > 3))
             {
                 Console.WriteLine("Введите цифру 1 или 2");
                 Task = Check(Console.ReadLine());
@@ -50,7 +51,7 @@ namespace Lab11Var4
                     Console.WriteLine("Введите 1 или 2");
                     Select = Check(Console.ReadLine());
                 }
-                SortedList<string, Organization> list = new SortedList<string, Organization>();
+                SortedList list = new SortedList();
                 list.Add("Factory", Fac);
                 list.Add("Insurance_Company", Ins);
                 list.Add("Library", Lib);
@@ -126,9 +127,9 @@ namespace Lab11Var4
                 Console.ReadKey();
                 void Show()
                 {
-                    ICollection<string> keys = list.Keys;
-                    foreach (var v in keys)
-                        list[v].Show();
+                    ICollection val = list.Values;
+                    foreach (Organization v in val)
+                        v.Show();
                 }
                 Console.Clear();
                 Console.WriteLine("Выберите запрос, который хотите осуществить\n1-Количество элементов определенного типа\n2-Печать элементов определенного типа\n3-Ключи элементов определенного типа");
@@ -148,7 +149,7 @@ namespace Lab11Var4
                             Console.WriteLine("Введите цифру от 1 до 5");
                             Select_3_Subt1 = Check(Console.ReadLine());
                         }
-                        ICollection<string> Keys1 = list.Keys;
+                        ICollection Keys1 = list.Keys;
                         switch (Select_3_Subt1)
                         {
                             case 1:
@@ -197,15 +198,15 @@ namespace Lab11Var4
                             Console.WriteLine("Введите цифру от 1 до 5");
                             Select_3_Subt1 = Check(Console.ReadLine());
                         }
-                        ICollection<string> Keys = list.Keys;
+                        ICollection Keys = list.Values;
                         switch (Select_3_Subt2)
                         {
                             case 1:
                                 int Count = 0;
-                                foreach (var t1 in Keys)
-                                    if (list[t1].GetType() == Fac.GetType())
+                                foreach (Organization t1 in Keys)
+                                    if (t1.GetType() == Fac.GetType())
                                     {
-                                        list[t1].Show();
+                                        t1.Show();
                                         Count++;
                                     }
                                 if (Count == 0)
@@ -213,10 +214,10 @@ namespace Lab11Var4
                                 break;
                             case 2:
                                 int Count1 = 0;
-                                foreach (var t1 in Keys)
-                                    if (list[t1].GetType() == Ins.GetType())
+                                foreach (Organization t1 in Keys)
+                                    if (t1.GetType() == Ins.GetType())
                                     {
-                                        list[t1].Show();
+                                        t1.Show();
                                         Count1++;
                                     }
                                 if (Count1 == 0)
@@ -224,10 +225,10 @@ namespace Lab11Var4
                                 break;
                             case 3:
                                 int Count2 = 0;
-                                foreach (var t1 in Keys)
-                                    if (list[t1].GetType() == Lib.GetType())
+                                foreach (Organization t1 in Keys)
+                                    if (t1.GetType() == Lib.GetType())
                                     {
-                                        list[t1].Show();
+                                        t1.Show();
                                         Count2++;
                                     }
                                 if (Count2 == 0)
@@ -235,10 +236,10 @@ namespace Lab11Var4
                                 break;
                             case 4:
                                 int Count3 = 0;
-                                foreach (var t1 in Keys)
-                                    if (list[t1].GetType() == Ship.GetType())
+                                foreach (Organization t1 in Keys)
+                                    if (t1.GetType() == Ship.GetType())
                                     {
-                                        list[t1].Show();
+                                        t1.Show();
                                         Count3++;
                                     }
                                 if (Count3 == 0)
@@ -246,10 +247,10 @@ namespace Lab11Var4
                                 break;
                             case 5:
                                 int Count4 = 0;
-                                foreach (var t1 in Keys)
-                                    if (list[t1].GetType() == Org.GetType())
+                                foreach (Organization t1 in Keys)
+                                    if (t1.GetType() == Org.GetType())
                                     {
-                                        list[t1].Show();
+                                        t1.Show();
                                         Count4++;
                                     }
                                 if (Count4 == 0)
@@ -266,7 +267,7 @@ namespace Lab11Var4
                             Console.WriteLine("Введите цифру от 1 до 5");
                             Select_3_Subt3 = Check(Console.ReadLine());
                         }
-                        ICollection<string> Keys2 = list.Keys;
+                        ICollection Keys2 = list.Keys;
                         switch (Select_3_Subt3)
                         {
                             case 1:
@@ -330,35 +331,18 @@ namespace Lab11Var4
                 }
                 Console.Clear();
                 Console.WriteLine("Перебор Элементов коллекции");
-                ICollection<string> keys1 = list.Keys;
-                foreach (var k in keys1)
-                    list[k].Show();
-                ////Console.Clear();
-                ////Console.WriteLine("Клонируем коллекцию");
-                //SortedList<int, Organization> Clone_List = new SortedList<int, Organization>();
-                ////for (int lo = 0; lo < list.Count; lo++)
-                ////    Clone_List.Add(lo, (Organization)list[lo].Clone());
-                ////foreach (var vi in keys1)
-                ////    Clone_List[vi].Show();
-                void PrintKeysAndValues(SortedList<string, Organization> myList)
-                {
-                    Console.WriteLine("\t-KEY-\t-VALUE-");
-                    //for (int i = 0; i < myList.Count; i++)
-                    //{
-                    //    Console.WriteLine("\t{0}:\t{1}", myList.GetKey(i), myList.GetByIndex(i));
-                    //}
-                    //Console.WriteLine();
-                    //Console.ReadKey();
-                }
+                ICollection keys1 = list.Values;
+                foreach (Organization k in keys1)
+                    k.Show();
                 Organization[] Arr_For_Coll = new Organization[list.Count];
-                Console.WriteLine("Какой элемент вы хоитите найти?\n1-Factory\n2-Insurance_Company\n3-Library\n4-Shipbuilding_company\n5-Organization");
+                Console.WriteLine("Какой элемент вы хотите найти?\n1-Factory\n2-Insurance_Company\n3-Library\n4-Shipbuilding_company\n5-Organization");
                 int Select_3_Subt4 = Check(Console.ReadLine());
                 while (Select_3_Subt4 < 1 || Select_3_Subt4 > 5)
                 {
                     Console.WriteLine("Введите цифру от 1 до 5");
                     Select_3_Subt4 = Check(Console.ReadLine());
                 }
-                ICollection<string> Keys3 = list.Keys;
+                ICollection Keys3 = list.Keys;
                 switch (Select_3_Subt4)
                 {
                     case 1:
@@ -790,6 +774,137 @@ namespace Lab11Var4
                 Console.ReadKey();
                 #endregion task2
             }
+            #region Task3
+            else if (Task == 3)
+            {
+                TestCollections Col1 = new TestCollections();
+                Console.WriteLine("Что вы хотите сделать?\n1-Добавить элемент\n2-Удалить элемент\n3-Измерить время");
+                int Select_For_3 = Check(Console.ReadLine());
+                {
+                    while ((Select_For_3 < 1) || (Select_For_3 > 3))
+                    {
+                        Console.WriteLine("ВВедите цифру от 1 до 3");
+                        Select_For_3 = Check(Console.ReadLine());
+                    }
+                }
+                switch (Select_For_3)
+                {
+                    case 1:
+                        Organization org = new Organization();
+                        Factory fac = new Factory();
+                        while (Col1.Sorted_Dictionary_Org.ContainsKey(org) || Col1.Sorted_Dictionary_String.ContainsKey(org.ToString()))
+                            org = (Organization)org.Init();
+                        fac = (Factory)fac.Init();
+                        Col1.Org_Queue.Enqueue(fac);
+                        Col1.Org_Queue_String.Enqueue(fac.ToString());
+                        Col1.Sorted_Dictionary_Org.Add(org, fac);
+                        Col1.Sorted_Dictionary_String.Add(org.ToString(), fac);
+                        foreach (var k in Col1.Org_Queue)
+                            k.Show();
+                        Console.ReadKey();
+                        break;
+                    case 2:
+                        Console.WriteLine("Какой из тысячи элементов вы хотите удалить?");
+                        int Delete = Check(Console.ReadLine());
+                        while (Delete < 1 || Delete > 1000)
+                        {
+                            Console.WriteLine("Введите число от 1 до 1000");
+                            Delete = Check(Console.ReadLine());
+                        }
+                        var keys = Col1.Sorted_Dictionary_Org.Keys;
+                        Col1.Sorted_Dictionary_Org.Remove(Col1.SpecialList[Delete-1]);
+                        Col1.Sorted_Dictionary_String.Remove((Col1.SpecialList[Delete - 1]).ToString());
+                        Console.WriteLine("Просматриваем словарь");
+                        foreach (var k in Col1.Sorted_Dictionary_Org.Keys)
+                            Col1.Sorted_Dictionary_Org[k].Show();
+                        Console.Clear();
+                        Console.WriteLine("Для очереди возможно лишь удалить последний элемент, поэтому удаляем его");
+                        Col1.Org_Queue.Dequeue();
+                        Col1.Org_Queue_String.Dequeue();
+                        foreach (var k in Col1.Org_Queue)
+                            k.Show();
+                        Console.ReadKey();
+                        break;
+                    case 3:
+                        Console.WriteLine("Первый элемент");
+                        Stopwatch time = new Stopwatch();
+                        time.Start();
+                        Col1.Sorted_Dictionary_Org.ContainsKey(Col1.SpecialList[0]);
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Sorted_Dictionary_Org коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        time.Reset();
+                        time.Start();
+                        Col1.Sorted_Dictionary_String.ContainsKey(Col1.SpecialList[0].ToString());
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Sorted_Dictionary_String коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        time.Reset();
+                        time.Start();
+                        Col1.Org_Queue.Contains(Col1.SpecialListForQueue[0]);
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Org_Queue коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        time.Reset();
+                        time.Start();
+                        Col1.Org_Queue_String.Contains(Col1.SpecialListForQueue[0].ToString());
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Org_Queue_String коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        Console.WriteLine("Серединный элемент");
+                        time.Reset();
+                        time.Start();
+                        Col1.Sorted_Dictionary_Org.ContainsKey(Col1.SpecialList[499]);
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Sorted_Dictionary_Org коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        time.Reset();
+                        time.Start();
+                        Col1.Sorted_Dictionary_String.ContainsKey(Col1.SpecialList[499].ToString());
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Sorted_Dictionary_String коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        time.Reset();
+                        time.Start();
+                        Col1.Org_Queue.Contains(Col1.SpecialListForQueue[499]);
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Org_Queue коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        time.Reset();
+                        time.Start();
+                        Col1.Org_Queue_String.Contains(Col1.SpecialListForQueue[499].ToString());
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Org_Queue_String коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        Console.WriteLine("Последний элемент");
+                        time.Reset();
+                        time.Start();
+                        Col1.Sorted_Dictionary_Org.ContainsKey(Col1.SpecialList[Col1.SpecialList.Count-1]);
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Sorted_Dictionary_Org коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        time.Reset();
+                        time.Start();
+                        Col1.Sorted_Dictionary_String.ContainsKey(Col1.SpecialList[Col1.SpecialList.Count - 1].ToString());
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Sorted_Dictionary_String коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        time.Reset();
+                        time.Start();
+                        Col1.Org_Queue.Contains(Col1.SpecialListForQueue[Col1.SpecialListForQueue.Count-1]);
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Org_Queue коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        time.Reset();
+                        time.Start();
+                        Col1.Org_Queue_String.Contains(Col1.SpecialListForQueue[Col1.SpecialListForQueue.Count - 1].ToString());
+                        time.Stop();
+                        Console.WriteLine($"Количетство тактов, затраченное на поиск элемента в Org_Queue_String коллекции: {time.ElapsedTicks}");
+                        Console.ReadKey();
+                        break;
+                }
+            }
+            #endregion
         }
     }
 }

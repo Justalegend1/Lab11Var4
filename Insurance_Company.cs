@@ -10,8 +10,8 @@ namespace Lab11Var4
     {
         string[] employee = new string[7] { "Петров", "Николаев", "Борисов", "Никитин", "Вяткин", "Уткин", "Отвальный" };
         int[] stage = new int[7] { 5, 3, 9, 4, 17, 9, 13 };
-        static int rating;
-        static int year_of_foundation;
+        int rating;
+        int year_of_foundation;
         public Insurance_Company() : base()
         {
             year_of_foundation = 0;
@@ -48,10 +48,15 @@ namespace Lab11Var4
                 }
             }
         }
+        //public override void Show()
+        //{
+        //    base.Show();
+        //    Console.WriteLine($"Фирма имеет рейтинг {rating} и организована в {year_of_foundation} году");
+        //}
         public override void Show()
         {
-            base.Show();
-            Console.WriteLine($"Фирма имеет рейтинг {rating} и организована в {year_of_foundation} году");
+            //Console.WriteLine($"Кол-во сотрудников: {number_of_employees}, название организации: {name} ");
+            Console.WriteLine(this.ToString());
         }
         public void ShowStage(int po)
         {
@@ -92,6 +97,10 @@ namespace Lab11Var4
                 return base.Equals(obj) && this.Rating == ((Insurance_Company)obj).Rating && this.Year_of_Foundation == ((Insurance_Company)obj).Year_of_Foundation;
             else
                 return false;
+        }
+        public override string ToString()
+        {
+            return base.ToString()+ " " + "Рейтинг: " + this.rating.ToString() + "," + "Год основания: " + this.year_of_foundation.ToString();
         }
     }
 }

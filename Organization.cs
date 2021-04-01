@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab11Var4
 {
-    public class Organization : IInit, ICloneable
+    public class Organization : IInit, ICloneable, IComparable
     {
         protected string name;
         protected int number_of_employees;
@@ -45,12 +45,13 @@ namespace Lab11Var4
         }
         public virtual void Show()
         {
-            Console.WriteLine($"Кол-во сотрудников: {number_of_employees}, название организации: {name} ");
+            //Console.WriteLine($"Кол-во сотрудников: {number_of_employees}, название организации: {name} ");
+            Console.WriteLine(this.ToString());
         }
         protected static Random rnd = new Random();
         public virtual object Init()
         {
-            string[] name1 = new string[7] {"Техкомфорт", "Газпром", "Ваше право", "Рука Фемиды", "Кодекс чести", "Гармония здоровья", "Apple" };
+            string[] name1 = new string[] {"Техкомфорт", "Газпром", "Ваше право", "Рука Фемиды", "Кодекс чести", "Гармония здоровья", "Apple", "Taxi", "Bonehook", "Big Spaceship", "Droga5", "The Bank", "Razorfish", "Naked", "Wikreate", "Steak", "Creature", "Lean Mean Fighting Machine", "High Heels & Bananas", "Blammo Worldwide", "Omobono", "The Chopping Block" };
             Organization k = new Organization(name1[rnd.Next(0, name1.Length - 1)], rnd.Next(1, 501));
             return k;
         }
@@ -71,7 +72,15 @@ namespace Lab11Var4
             else
                 return false;
         }
-
+        public override string ToString()
+        {
+            return "Название организации: " + this.name + ", " + "Количество сотрудников: " + this.number_of_employees.ToString();
+        }
+        public int CompareTo(object obj)
+        {
+            if (((Organization)obj).name == this.name&& ((Organization)obj).number_of_employees > this.number_of_employees) { return 0; }
+            else return -1;
+        }
     }
     //public void Show()
     //{

@@ -49,13 +49,18 @@ namespace Lab11Var4
                 }
             }
         }
+        //public override void Show()
+        //{
+        //    base.Show();
+        //    if (number_of_ships >= 5)
+        //        Console.WriteLine($"Средний доход фирмы: {average_income}, и на счету фирмы уже {number_of_ships} созданных кораблей");
+        //    else
+        //        Console.WriteLine($"Средний доход фирмы: {average_income}, и на счету фирмы уже {number_of_ships} созданных корабля");
+        //}
         public override void Show()
         {
-            base.Show();
-            if (number_of_ships >= 5)
-                Console.WriteLine($"Средний доход фирмы: {average_income}, и на счету фирмы уже {number_of_ships} созданных кораблей");
-            else
-                Console.WriteLine($"Средний доход фирмы: {average_income}, и на счету фирмы уже {number_of_ships} созданных корабля");
+            //Console.WriteLine($"Кол-во сотрудников: {number_of_employees}, название организации: {name} ");
+            Console.WriteLine(this.ToString());
         }
         public void ShowStage(int po)
         {
@@ -98,5 +103,10 @@ namespace Lab11Var4
             else
                 return false;
         }
+        public override string ToString()
+        {
+            return base.ToString() + " " + "Средний доход: " + this.average_income.ToString() + "," + "Количество созданных кораблей: " + this.number_of_ships.ToString();
+        }
+
     }
 }
