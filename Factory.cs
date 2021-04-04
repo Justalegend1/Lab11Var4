@@ -43,7 +43,10 @@ namespace Lab11Var4
                 city_of_object = Convert.ToString(value);
             }
         }
-
+        public Organization BaseFactory 
+        {
+            get { return new Organization(name, number_of_employees); }
+        }
         //public override void Show()
         //{
         //    base.Show();
@@ -79,7 +82,7 @@ namespace Lab11Var4
         public override object Init()
         {
             Organization o = (Organization)base.Init();
-            string[] City_Object = new string[7] { "Пермь", "Москва", "Лондон", "Париж", "Венеция", "Прага", "Амстердам" };
+            string[] City_Object = new string[] { "Пермь", "Москва", "Лондон", "Париж", "Венеция", "Прага", "Амстердам", "Барнаул", "Каир","Стамбул","Ничанг", "Далат","Барселона"};
             Factory f = new Factory(o.Name, o.Number_of_employees, AgeObJ = rnd.Next(1, 50), City_of_Object = City_Object[rnd.Next(0, City_Object.Length - 1)]);
             return f;
         }

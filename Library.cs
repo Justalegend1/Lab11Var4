@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Lab11Var4
 {
-    public class Library : Organization, ICloneable
+    public class Library : Organization, ICloneable, IComparer
     {
         int working_hours;
         int number_of_books;
@@ -102,6 +103,12 @@ namespace Lab11Var4
         public override string ToString()
         {
             return base.ToString() + " " + "Часы работы: " + this.working_hours.ToString() + "," + "Количество книг: " + this.number_of_books.ToString();
+        }
+        public int Compare(object x, object y)
+        {
+            if (((Organization)x).Number_of_employees > ((Organization)y).Number_of_employees) { return 1; }
+            else if(((Organization)x).Number_of_employees < ((Organization)y).Number_of_employees) { return -1; }
+            else { return 0; }
         }
     }
 }

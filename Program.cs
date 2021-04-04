@@ -59,6 +59,12 @@ namespace Lab11Var4
                 list.Add("Organization", Org);
                 Console.WriteLine("Исходная коллекция");
                 Show();
+                List<Organization> list1 = new List<Organization>();
+                list1.Add(Fac);
+                list1.Add(Ins);
+                list1.Add(Lib);
+                list1.Add(Ship);
+                list1.Add(Org);
                 switch (Select)
                 {
                     case 1:
@@ -74,18 +80,22 @@ namespace Lab11Var4
                             case 1:
                                 Organization New_Org = new Organization("Организация1", 450);
                                 list.Add("Organization1", New_Org);
+                                list1.Add( New_Org);
                                 break;
                             case 2:
                                 Insurance_Company New_Ins = new Insurance_Company("Страховая компания1", 290, 1989, 89);
                                 list.Add("Insurance_Company1", New_Ins);
+                                list1.Add( New_Ins);
                                 break;
                             case 3:
                                 Library New_Lib = new Library("Библиотека1", 458, 7, 790);
                                 list.Add("Library1", New_Lib);
+                                list1.Add(New_Lib);
                                 break;
                             case 4:
                                 Factory New_Fac = new Factory("Фабрика1", 345, 45, "Сочи");
                                 list.Add("Factory1", New_Fac);
+                                list1.Add(New_Fac);
                                 break;
                             case 5:
                                 Shipbuilding_company New_Ship = new Shipbuilding_company("Копаблестроительная фирма1", 560, 45000000, 34);
@@ -106,18 +116,23 @@ namespace Lab11Var4
                         {
                             case 1:
                                 list.RemoveAt(0);
+                                list1.RemoveAt(0);
                                 break;
                             case 2:
                                 list.RemoveAt(1);
+                                list1.RemoveAt(1);
                                 break;
                             case 3:
                                 list.RemoveAt(2);
+                                list1.RemoveAt(2);
                                 break;
                             case 4:
                                 list.RemoveAt(3);
+                                list1.RemoveAt(3);
                                 break;
                             case 5:
                                 list.RemoveAt(4);
+                                list1.RemoveAt(4);
                                 break;
                         }
                         Show();
@@ -334,6 +349,21 @@ namespace Lab11Var4
                 ICollection keys1 = list.Values;
                 foreach (Organization k in keys1)
                     k.Show();
+                Console.WriteLine("Сортируем необобщенную коллекцию");
+                Organization t;
+
+                for (int o = 0; o < list1.Count; o++)
+                    for (int o1 = o + 1; o1 < list1.Count; o1++)
+                        if (list1[o].Number_of_employees > (list1[o1].Number_of_employees))
+                        {
+                            t = list1[o1];
+                            list1[o1] = list1[o];
+                            list1[o] = t;
+                        }
+                foreach (Organization t1 in list1)
+                    t1.Show();
+                //foreach (Organization k in keys1)
+                //    k.Show();
                 Organization[] Arr_For_Coll = new Organization[list.Count];
                 Console.WriteLine("Какой элемент вы хотите найти?\n1-Factory\n2-Insurance_Company\n3-Library\n4-Shipbuilding_company\n5-Organization");
                 int Select_3_Subt4 = Check(Console.ReadLine());
@@ -778,6 +808,8 @@ namespace Lab11Var4
             else if (Task == 3)
             {
                 TestCollections Col1 = new TestCollections();
+                Factory t;
+                
                 Console.WriteLine("Что вы хотите сделать?\n1-Добавить элемент\n2-Удалить элемент\n3-Измерить время");
                 int Select_For_3 = Check(Console.ReadLine());
                 {

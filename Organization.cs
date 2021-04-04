@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Lab11Var4
 {
-    public class Organization : IInit, ICloneable, IComparable
+    public class Organization : IInit, ICloneable, IComparable,IComparer
     {
         protected string name;
         protected int number_of_employees;
@@ -78,7 +79,12 @@ namespace Lab11Var4
         }
         public int CompareTo(object obj)
         {
-            if (((Organization)obj).name == this.name&& ((Organization)obj).number_of_employees > this.number_of_employees) { return 0; }
+            if (((Organization)obj).name == this.name && ((Organization)obj).number_of_employees > this.number_of_employees) { return 0; }
+            else return -1;
+        }
+         int IComparer.Compare(object obj, object obj1)
+        {
+            if /*(((Organization)obj).name == ((Organization)obj1).name &&*/ (((Organization)obj).number_of_employees > ((Organization)obj1).number_of_employees) { return 0; }
             else return -1;
         }
     }

@@ -20,16 +20,14 @@ namespace Lab11Var4
         {
             for (int i = 0; i < 1000; i++)
             {
-                org = (Organization)org.Init();
-                while (Sorted_Dictionary_Org.ContainsKey(org)|| Sorted_Dictionary_String.ContainsKey(org.ToString()))
-                    org = (Organization)org.Init();
-                SpecialList.Add(org);
+                while (Sorted_Dictionary_Org.ContainsKey(fac.BaseFactory)|| Sorted_Dictionary_String.ContainsKey(fac.ToString()))
+                    fac = (Factory)fac.Init();
+                SpecialList.Add(fac.BaseFactory);
                 SpecialListForQueue.Add(fac);
-                        fac = (Factory)fac.Init();
-                        Org_Queue.Enqueue(fac);
-                        Org_Queue_String.Enqueue(fac.ToString());
-                        Sorted_Dictionary_Org.Add(org, fac);
-                        Sorted_Dictionary_String.Add(org.ToString(), fac);
+                Org_Queue.Enqueue(fac);
+                Org_Queue_String.Enqueue(fac.BaseFactory.ToString());
+                Sorted_Dictionary_Org.Add(fac.BaseFactory, fac);
+                Sorted_Dictionary_String.Add(fac.ToString(), fac);
                     
             }
             foreach (var k in Org_Queue)
